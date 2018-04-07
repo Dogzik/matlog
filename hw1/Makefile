@@ -2,7 +2,7 @@
 GENERATED=src/parser.mli src/parser.ml src/lexer.ml
 SOURCE=src/utils.ml src/axiom_cheker.ml src/checker.ml
 OCAMLC=ocamlc # ocamlopt for speed
-PACKAGE=hw0.zip
+PACKAGE=hw1.zip
 
 ifeq ($(OS),Windows_NT)
 	DEL=del /f

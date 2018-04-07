@@ -1,37 +1,6 @@
 open Grammar
 open Utils
 
-let axioms = List.map (parse_string Parser.main)
-            ["A->B->A";
-			 "(A->B)->(A->B->C)->(A->C)";
-			 "A->B->A&B";
-			 "A&B->A";  
-			 "A&B->B";
-			 "A->A|B";
-			 "B->A|B";
-			 "(A->C)->(B->C)->(A|B->C)";
-			 "(A->B)->(A->!B)->!A";
-			 "!!A->A"]
-
-let check_axiom axiom expr = 
-	let atoms = (Hashtbl.create 1337 : (string, expression) Hashtbl.t) in
-	let rec equals a b = match (a, b) with
-	| (Bin (Impl, x, y), Bin (Impl, a, b))
-	| (Bin (Or, x, y), Bin (Or, a, b))
-	| (Bin (And, x, y), Bin (And, a, b)) -> (equals x a) && (equals y b)
-	| (Not (a), Not (b)) -> equals a b
-	| (Var (a), b) ->
-		if (Hashtbl.mem atoms a) then
-			(Hashtbl.find atoms a) = b
-		else begin
-			Hashtbl.add atoms a b;
-			true
-		end
-	| _ -> false in
-	equals axiom expr
-;;
-
-
 let check_ax expr =
 	let check45 a b c = if (a = c) then 4 else if (b = c) then 5 else 0 in
 	let check67 a b c = if (a = b) then 6 else if (a = c) then 7 else 0 in
