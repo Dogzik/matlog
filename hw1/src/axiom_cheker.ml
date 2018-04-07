@@ -18,6 +18,6 @@ let check_ax expr =
 	| Bin (Impl, Bin (Impl, a1, b1), Bin (Impl, Bin(Impl, a2, Not (b2)), Not (a3))) 
 	when (a1 = a2 && a2 = a3 && b1 = b2) -> 9
 	| Bin (Impl, Not (Not (a1)), a2)
-	when (a1 == a2) -> 10
+	when (a1 = a2) -> 10
 	| _ -> 0
 ;;

@@ -13,7 +13,7 @@ add_assumptions (parse_assumptions (input_line ic));;
 let ind = ref 1;;
 
 try
-	while true; do
+	while true do
 		let line = input_line ic in
 		if (line <> "") then begin
 			let expr = parse_expression line in
