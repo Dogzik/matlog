@@ -18,8 +18,6 @@ let rec check_axioms expr = match (check_ax expr) with
 
 let check_assumptions expr = if (Ht.mem assumps expr) then (Some (Ht.find assumps expr)) else None;;
 
-let check_mp expr = if (Ht.mem proved expr) then (Some (Ht.find proved expr)) else None;;
-
 let upd_mp expr ind = match expr with
 	| Bin (Impl, a, b) ->	
 		if (Ht.mem exprs_inds a) then Ht.replace proved b (ind, get_ind a)
