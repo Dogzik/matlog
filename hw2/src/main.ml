@@ -6,7 +6,7 @@ open Printf;;
 
 let (ic, oc) = (open_in "input.txt", open_out "output.txt");;
 
-let add_assumptions asmps = 
+let add_assumptions asmps = begin 
 	let rev_asmps = List.rev asmps in
 	if ((List.length rev_asmps) > 1) then begin
 		let true_asmps = List.rev (List.tl rev_asmps) in
@@ -14,7 +14,7 @@ let add_assumptions asmps =
 		fprintf oc "%s" (String.concat ", " (List.map string_of_expression true_asmps));
 	end;
 	List.hd rev_asmps
-;;
+end;;
 
 let (asmps, res) = parse_assumptions (input_line ic);;
 
@@ -46,7 +46,7 @@ let fa expr = begin
 end;;
 
 let mod_pon di = begin
-	let j = fst (Ht.find proved di) in
+	let j = snd (Ht.find proved di) in
 	let dj = (Ht.find inds_exprs j) in
 	let a_dj = (fa_str ^ "->" ^ (string_of_expression dj)) in
 	let a_di = (fa_str ^ "->" ^ (string_of_expression di)) in
