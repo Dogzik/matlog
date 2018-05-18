@@ -1,6 +1,6 @@
 .PHONY: pack all run clean src/parcer src/sources
 GENERATED=src/parser.mli src/parser.ml src/lexer.ml
-SOURCE=src/utils.ml src/axiom_cheker.ml src/var_cheker.ml src/checker.ml src/proofs.ml src/proof_getter.ml src/deducer.ml
+SOURCE=src/utils.ml src/axiom_cheker.ml src/var_cheker.ml src/proofs.ml src/proof_getter.ml src/deducer.ml
 OCAMLC=ocamlc # ocamlopt for speed
 PACKAGE=hw3.zip
 
